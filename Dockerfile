@@ -56,7 +56,7 @@ RUN apk add --no-cache \
     sed -e "s|^\(Example\)|\# \1|" \
         -e "s|.*\(PidFile\) .*|\1 /run/lock/clamd.pid|" \
         -e "s|.*\(LocalSocket\) .*|\1 /run/clamav/clamd.sock|" \
-        -e "s|.*\(TCPSocket\) .*|\1 3310|" \
+        -e "s|.*\(TCPSocket\) .*|\1 80|" \
         -e "s|.*\(TCPAddr\) .*|#\1 0.0.0.0|" \
         -e "s|.*\(User\) .*|\1 clamav|" \
         -e "s|^\#\(LogFile\) .*|\1 /var/log/clamav/clamd.log|" \
@@ -84,7 +84,7 @@ FROM index.docker.io/library/alpine:latest
 
 LABEL maintainer="ClamAV bugs <clamav-bugs@external.cisco.com>"
 
-EXPOSE 3310
+EXPOSE 80
 EXPOSE 7357
 
 ENV TZ Etc/UTC
